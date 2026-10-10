@@ -57,12 +57,18 @@ def knapsack_brute(paket, W, i=0):
 
 
 if __name__ == "__main__":
-    # Kasus uji kecil (Tabel VI): (paket, W, jawaban benar)
+    from buat_data_paket import buat_data
+
+    data10 = buat_data(10, seed=42)   # 10 paket acak untuk kasus 5 dan 6
+
+    # Kasus uji (Tabel VI): (paket, W, jawaban benar)
     kasus = [
         ([("A", 1, 15), ("B", 2, 25), ("C", 3, 40), ("D", 4, 45)], 5, 65),
         ([("A", 6, 50), ("B", 2, 20), ("C", 3, 30)], 5, 50),
         ([("A", 1, 10), ("B", 2, 15), ("C", 2, 18)], 5, 43),
         ([("A", 6, 40), ("B", 7, 55)], 5, 0),
+        (data10, 5, 75),
+        (data10, 10, 102),
     ]
     for no, (paket, W, benar) in enumerate(kasus, start=1):
         K = knapsack_dp(paket, W)
